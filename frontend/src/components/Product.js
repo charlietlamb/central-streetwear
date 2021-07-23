@@ -4,6 +4,7 @@ import Rating from './Rating';
 
 export default function Product(props) {
   const { product } = props;
+  console.log(product)
   return (
     <div key={product._id} className="card">
       <Link to={`/product/${product._id}`}>
@@ -19,11 +20,19 @@ export default function Product(props) {
         ></Rating>
         <div className="row">
           <div className="price">${product.price}</div>
-          <div>
+          {
+            product.seller ? (
+              <div>
             <Link to={`/seller/${product.seller._id}`}>
-              {product.seller.seller.name}
+              {/* {product.seller.seller.name} */}
             </Link>
           </div>
+            ) :
+            (
+              <></>
+            )
+          }
+          
         </div>
       </div>
     </div>
